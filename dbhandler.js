@@ -6,10 +6,13 @@ const mysql = require('mysql');
 
 function createConnection() {
     let connection = mysql.createConnection({
-        host : 'mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/',
-        user : 'adminYqXYkYr',
-        database : 'pokemon',
-        password : 'ML8ghwzu4wwS'
+        // host: 'sql11.freemysqlhosting.net',
+        // user: 'sql11155241',
+        // database: 'sql11155241',
+        // password: 'UuGBn2zY5R'
+        host : 'localhost',
+        user : 'pokemonuser',
+        database : 'pokemondb'
     });
     return connection
 }

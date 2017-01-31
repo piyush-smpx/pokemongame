@@ -5,31 +5,31 @@
 var pokemonSelected = 'pikachu.png';
 var playerName;
 
-$("#newGame").on('touchstart click', function () {
+$("#newGame").on('touchstart click',function () {
     $("#content").hide();
     $("#userDetail").show();
 });
 
-$("#instruct").on('touchstart click', function () {
+$("#instruct").on('touchstart click',function () {
     $("#content").hide();
     $("#instructions").show();
 });
 
-$(".back").on('touchstart click', function () {
+$(".back").on('touchstart click',function () {
     $("#instructions").hide();
     $('#userDetail').hide();
     $('#leaderBoard').hide();
     $("#content").show();
 });
 
-$("li").on('touchstart click', function () {
+$("li").on('touchstart click',function () {
     var el = $(this);
     el.css('background-color','deepskyblue');
     var temp = ( el.children() )[0].src.split('/');
     pokemonSelected = temp[temp.length - 1];
 });
 
-$("#playGame").on('touchstart click', function () {
+$("#playGame").on('touchstart click',function () {
     playerName = $("#playerName").val();
     if( playerName == '' )
     {
@@ -56,12 +56,13 @@ $("#playGame").on('touchstart click', function () {
     }
 });
 
-$('#ShowLeaderBoard').on('touchstart click', function () {
+$('#ShowLeaderBoard').on('touchstart click',function () {
     $('#content').hide();
     $('#leaderBoard').show();
+    $('#leaderBoard table tr').not(':first').remove();
     $.get('/leaderboard',function (data,status) {
         console.log(data);
-        for(var i=0;i<10;i++)
+        for(var i=0; i < Math.min(10, data.length); i++)
         {
             $('#leaderBoard table').append(
                 '<tr>' +

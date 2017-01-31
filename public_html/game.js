@@ -8,7 +8,7 @@ var level;
 
 //////FETCHING PLAYER DETAILS//////
 var playerStr = localStorage.getItem('player');
-if(playerStr == null)
+if(playerStr == "")
     window.location.href = "/";
 else
 {
@@ -122,11 +122,11 @@ while(temp>1)     ///refreshing speed on reloading
 
 $('#score').html("SCORE <br><span>"+score+"</span>");
 
-$('#playAgain').on('touchstart click', function () {
+$('#playAgain').on('touchstart click',function () {
     window.location.href = '/';
 });
 
-$('#nextLevel').on('touchstart click', function () {
+$('#nextLevel').on('touchstart click',function () {
     $('#alertBox').hide();
     $('#score').show();
     level++;
@@ -179,6 +179,7 @@ function isColliding(r1,r2) {
         $('#playerName').html(playerObj.name);
         $('#playerScore').html('Score: ' + playerObj.score);
         gameOver = true;
+        playerStr = "";
         return true;
     }
     else
